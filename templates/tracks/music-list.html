@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+
+{% block title %}Music Collection{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1 class="animated-text">Music Collection</h1>
+    <a href="music-create.html" class="btn pulse"><i class="fas fa-plus"></i> Add New Music</a>
+</section>
+
+<section class="music-list">
+    <div class="music-item glass-effect">
+        <img src="{{ track.track_image.url }}" alt="Song 1">
+        <div class="music-info">
+            <h3>Awesome Song</h3>
+            <p>Amazing Artist</p>
+        </div>
+        <div class="music-actions">
+            <a href="{{ track.get_detail.url }}" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
+            <a href="{{ track.get_update.url }}" class="btn btn-edit"><i class="fas fa-edit"></i></a>
+            <a href="{{ track.get_delete.url }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+        </div>
+    </div>
+    <div class="music-item glass-effect">
+        <img src="https://via.placeholder.com/150x150" alt="Song 2">
+        <div class="music-info">
+            <h3>Cool Tune</h3>
+            <p>Groovy Band</p>
+        </div>
+        <div class="music-actions">
+            <a href="music-detail.html" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
+            <a href="music-update.html" class="btn btn-edit"><i class="fas fa-edit"></i></a>
+            <a href="music-delete-confirm.html" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+        </div>
+    </div>
+</section>
+{% endblock %}

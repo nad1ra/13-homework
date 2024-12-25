@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Music Detail - MusicVideoHub{% endblock %}
+
+{% block content %}
+    <section class="page-header">
+        <h1 class="animated-text">Music Detail</h1>
+        <a href="music-list.html" class="btn"><i class="fas fa-arrow-left"></i> Back to List</a>
+    </section>
+
+    <section class="music-detail glass-effect">
+        <div class="music-cover">
+            <img src="https://via.placeholder.com/300x300" alt="Album Cover">
+        </div>
+        <div class="music-info">
+            <h2>Awesome Song</h2>
+            <p class="artist">by Amazing Artist</p>
+            <p class="album">Album: Incredible Sounds</p>
+            <p class="genre">Genre: Pop</p>
+            <p class="release-date">Released: June 15, 2023</p>
+            <div class="music-player">
+                <audio controls>
+                    <source src="path_to_audio_file.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="action-buttons">
+                <a href="music-update.html" class="btn btn-edit"><i class="fas fa-edit"></i> Edit</a>
+                <a href="music-delete-confirm.html" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
