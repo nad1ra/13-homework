@@ -12,7 +12,7 @@
         <div class="featured-item music-card">
             <div class="card-content">
                 <h2>Featured Music</h2>
-                <img src="{{ track.audio_url }}" alt="Featured Music">
+                <img src="https://media.vogue.mx/photos/5f63cb592be56ca8eb8b2c55/master/w_1600%2Cc_limit/bts-k-pop.jpg" alt="Featured Music">
                 <p>Discover our latest and greatest tracks</p>
                 <a href="{% url 'tracks:list' %}" class="btn pulse">Explore Music</a>
             </div>
@@ -20,7 +20,7 @@
         <div class="featured-item video-card">
             <div class="card-content">
                 <h2>Featured Video</h2>
-                <img src="https://via.placeholder.com/300x300" alt="Featured Video">
+                <img src="{{ track.image.url }}" alt="Featured Video">
                 <p>Watch our top-rated videos</p>
                 <a href="video-list.html" class="btn pulse">Explore Videos</a>
             </div>

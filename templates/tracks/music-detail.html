@@ -10,7 +10,7 @@
 
     <section class="music-detail glass-effect">
         <div class="music-cover">
-            <img src="{{ track.image_url }}" alt="Album Cover">
+            <img src="{{ track.image.url }}" alt="Album Cover">
         </div>
         <div class="music-info">
             <h2>{{ track.title }}</h2>
@@ -20,7 +20,7 @@
             <p class="release-date">Date: {{ track.release_date }}</p>
             <div class="music-player">
                 <audio controls>
-                    <source src="{{ track.audio_url }}" type="audio/mpeg">
+                    <source src="{{ track.audio.url }}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>

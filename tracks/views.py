@@ -18,10 +18,10 @@ def track_create(request):
         album = request.POST.get('album')
         genre = request.POST.get('genre')
         release_date = request.POST.get('release_date')
-        image = request.FILES.get('/image')
-        audio = request.FILES.get('/audio')
-        if (title and artist and album and genre and
-        release_date and image and audio):
+        image = request.FILES.get('image')
+        audio = request.FILES.get('audio')
+        if (title and artist and album and
+            genre and release_date and image and audio):
             Track.objects.create(
                 title=title,
                 artist=artist,
@@ -49,17 +49,18 @@ def track_update(request, pk):
         album = request.POST.get('album')
         genre = request.POST.get('genre')
         release_date = request.POST.get('release_date')
-        image = request.FILES.get('/image')
-        audio = request.FILES.get('/audio')
-        if (title and artist and album and genre and release_date
-            and image and audio):
-            track.title=title
-            track.artist=artist
-            track.album=album
-            track.genre=genre
-            track.release_date=release_date
-            track.image=image
-            track.audio=audio
+        image = request.FILES.get('image')
+        audio = request.FILES.get('audio')
+        if title and artist and album and genre and release_date:
+            track.title = title
+            track.artist = artist
+            track.album = album
+            track.genre = genre
+            track.release_date = release_date
+            if image:
+                track.image = image
+            if audio:
+                track.audio = audio
             track.save()
             return redirect(track.get_detail_url())
     ctx = {'track': track}
@@ -68,6 +69,9 @@ def track_update(request, pk):
 
 def track_delete(request, pk):
     track = get_object_or_404(Track, pk=pk)
-    track.delete()
-    return redirect('tracks:list')
+    if request.method == 'POST':
+        track.delete()
+        return redirect('tracks:list')
+    ctx = {'track': track}
+    return render(request, 'tracks/music-delete-confirm.html', ctx)
 

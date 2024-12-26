@@ -11,9 +11,9 @@
 <section class="music-list">
     {% for track in tracks %}
     <div class="music-item glass-effect">
-        <img src="{{ track.track_image_url }}" alt="Song 1">
+        <img src="{{ track.image.url }}" alt="Song 1">
         <div class="music-info">
-            <h3>{{ track.music_title }}</h3>
+            <h3>{{ track.title }}</h3>
             <p>{{ track.artist }}</p>
         </div>
         <div class="music-actions">
@@ -23,7 +23,7 @@
         </div>
     </div>
     {% empty %}
-    <h1>No tracks</h1>
+        <h1>No tracks</h1>
     {% endfor %}
 </section>
 {% endblock %}
