@@ -6,8 +6,8 @@ def home(request):
 
 
 def track_list(request):
-    musics = Track.objects.all()
-    ctx = {'musics': musics}
+    tracks = Track.objects.all()
+    ctx = {'tracks': tracks}
     return render(request, 'tracks/music-list.html', ctx)
 
 
@@ -18,8 +18,8 @@ def track_create(request):
         album = request.POST.get('album')
         genre = request.POST.get('genre')
         release_date = request.POST.get('release_date')
-        image = request.POST.get('image')
-        audio = request.POST.get('audio')
+        image = request.FILES.get('/image')
+        audio = request.FILES.get('/audio')
         if (title and artist and album and genre and
         release_date and image and audio):
             Track.objects.create(
@@ -32,7 +32,7 @@ def track_create(request):
                 audio=audio
             )
             return redirect('tracks:list')
-    return render(request, 'tracks/music-list.html')
+    return render(request, 'tracks/music-form.html')
 
 
 def track_detail(request, pk):
@@ -49,8 +49,8 @@ def track_update(request, pk):
         album = request.POST.get('album')
         genre = request.POST.get('genre')
         release_date = request.POST.get('release_date')
-        image = request.POST.get('image')
-        audio = request.POST.get('audio')
+        image = request.FILES.get('/image')
+        audio = request.FILES.get('/audio')
         if (title and artist and album and genre and release_date
             and image and audio):
             track.title=title
@@ -62,11 +62,11 @@ def track_update(request, pk):
             track.audio=audio
             track.save()
             return redirect(track.get_detail_url())
-    ctx = {'track', track}
-    return render(request,'tracks/music-update.html', ctx)
+    ctx = {'track': track}
+    return render(request,'tracks/music-form.html', ctx)
 
 
-def track_delete(pk):
+def track_delete(request, pk):
     track = get_object_or_404(Track, pk=pk)
     track.delete()
     return redirect('tracks:list')

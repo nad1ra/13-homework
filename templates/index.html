@@ -12,9 +12,9 @@
         <div class="featured-item music-card">
             <div class="card-content">
                 <h2>Featured Music</h2>
-                <img src="https://via.placeholder.com/300x300" alt="Featured Music">
+                <img src="{{ track.audio_url }}" alt="Featured Music">
                 <p>Discover our latest and greatest tracks</p>
-                <a href="music-list.html" class="btn pulse">Explore Music</a>
+                <a href="{% url 'tracks:list' %}" class="btn pulse">Explore Music</a>
             </div>
         </div>
         <div class="featured-item video-card">
